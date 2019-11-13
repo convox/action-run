@@ -11,7 +11,7 @@ This Action runs a [One-off Command](https://docs.convox.com/management/one-off-
 ### `command`
 **Required** The command you wish to run
 ### `release`
-**Optional** The ID of the [release](https://docs.convox.com/deployment/releases) you wish to run the command against. This ID is output as `release` by the [Build](https://github.com/convox/action-build) action. Only needed if you have not run a build step first or you wish to override the release id from the build step
+**Optional** The ID of the [release](https://docs.convox.com/deployment/releases) you wish to run the command against. If you have run a Build action as a previous step your command will run using the release created by that build step by default. You only need to set the release if you have not run a build step first or you wish to override the release id from the build step
 ## Example usage
 ```
 steps:
