@@ -11,29 +11,29 @@ This Action runs a [One-off Command](https://docs.convox.com/management/one-off-
 ### `command`
 **Required** The command you wish to run
 ### `release`
-**Optional** The ID of the [release](https://docs.convox.com/deployment/releases) you wish to run the command against. This ID is output as `release` by the [Build](../build) action. Only needed if you have not run a build step first or you wish to override the release id from the build step
+**Optional** The ID of the [release](https://docs.convox.com/deployment/releases) you wish to run the command against. This ID is output as `release` by the [Build](https://github.com/convox/action-build) action. Only needed if you have not run a build step first or you wish to override the release id from the build step
 ## Example usage
 ```
 steps:
 - name: login
-  uses: convox/actions/login@v1
+  uses: convox/action-login@v1
   with:
     password: ${{ secrets.CONVOX_DEPLOY_KEY }}
 - name: build
   id: build
-  uses: convox/actions/build@v1
+  uses: convox/action-build@v1
   with:
     rack: staging
     app: myapp
 - name: run
-  uses: convox/actions/run@v1
+  uses: convox/action-run@v1
   with:
     rack: staging
     app: myapp
     service: web
     command 'rake db:migrate'
 - name: promote
-  uses: convox/actions/promote@v1
+  uses: convox/action-promote@v1
   with:
     rack: staging
     app: myapp
