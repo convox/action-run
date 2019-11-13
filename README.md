@@ -16,6 +16,7 @@ This Action runs a [One-off Command](https://docs.convox.com/management/one-off-
 ```
 steps:
 - name: login
+  id: login
   uses: convox/action-login@v1
   with:
     password: ${{ secrets.CONVOX_DEPLOY_KEY }}
@@ -25,16 +26,20 @@ steps:
   with:
     rack: staging
     app: myapp
-- name: run
+- name: migrate
+  id: migrate
   uses: convox/action-run@v1
   with:
     rack: staging
     app: myapp
     service: web
     command 'rake db:migrate'
+    release: ${{ steps.build.outputs.release }}
 - name: promote
+  id: promote
   uses: convox/action-promote@v1
   with:
     rack: staging
     app: myapp
+    release: ${{ steps.build.outputs.release }}
 ```
