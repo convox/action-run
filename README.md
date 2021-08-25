@@ -17,7 +17,7 @@ This Action runs a [One-off Command](https://docs.convox.com/management/one-off-
 steps:
 - name: login
   id: login
-  uses: convox/action-login@v1
+  uses: convox/action-login@v2
   with:
     password: ${{ secrets.CONVOX_DEPLOY_KEY }}
 - name: build
