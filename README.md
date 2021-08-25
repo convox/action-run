@@ -33,7 +33,7 @@ steps:
     rack: staging
     app: myapp
     service: web
-    command 'rake db:migrate'
+    command: 'rails db:migrate'
     release: ${{ steps.build.outputs.release }}
 - name: promote
   id: promote
