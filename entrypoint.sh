@@ -20,12 +20,14 @@ fi
 
 if [ -n "$INPUT_RELEASE" ]
 then
- export RELEASE=$INPUT_RELEASE
+ export RELEASE="$INPUT_RELEASE"
 fi
 
-export CONVOX_RACK=$INPUT_RACK
+export CONVOX_RACK="$INPUT_RACK"
 
 CONVOX_ARGS="--app $INPUT_APP --rack $INPUT_RACK"
+# Note: CONVOX_ARGS is expanded inside a script -c string below where it is
+# re-parsed by /bin/sh, so inner quoting is intentionally omitted here.
 if [ -n "$RELEASE" ]
 then
   echo "Running command on the application for the release $RELEASE"
