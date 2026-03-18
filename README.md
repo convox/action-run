@@ -1,6 +1,8 @@
 # Convox Run Action
 This Action runs a [One-off Command](https://docs.convox.com/management/one-off-commands) using a specific release of an app on Convox. A typical use case of this action would be to run migrations or a similar pre-deploy or post-deploy command.
 
+> **Note:** This action automatically allocates a pseudo-TTY for proper output streaming and color support in GitHub Actions runners.
+
 ## Inputs
 ### `rack`
 **Required** The name of the [Convox Rack](https://docs.convox.com/introduction/rack) containing the app you wish to run the command against
