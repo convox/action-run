@@ -44,7 +44,7 @@ fi
 # Flags: -q (quiet), -e (return child exit code), -c (run command)
 # /dev/null discards the typescript recording file.
 set +e
-script -qec "convox run $INPUT_SERVICE '$INPUT_COMMAND' $CONVOX_ARGS" /dev/null
+script -qec "convox run $INPUT_SERVICE '$INPUT_COMMAND' --timeout 3600 $CONVOX_ARGS" /dev/null
 exit_code=$?
 set -e
 
