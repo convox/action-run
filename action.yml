@@ -1,6 +1,9 @@
 name: Convox Run
 description: Run a command
 author: Convox
+branding:
+  icon: terminal
+  color: blue
 inputs:
   rack:
     description: Convox Rack name
