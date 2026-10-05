@@ -1,5 +1,5 @@
 name: Convox Run
-description: Run a command
+description: Run a command in a new process
 author: Convox
 branding:
   icon: terminal
@@ -20,6 +20,24 @@ inputs:
   release:
     description: ID of the release to run the command against. Only needed if you have not run a build step first or you wish to override the release id from the build step
     required: false
+  wait:
+    description: Run the command detached and wait for it to finish, exiting with its status. Requires a V3 rack on 3.25.5 or later
+    required: false
+    default: 'false'
+  timeout:
+    description: Seconds. Attached, the lifetime of the run process. With wait, how long to wait for the command
+    required: false
+    default: '3600'
+  detach:
+    description: Start the command and return once the rack accepts it, without waiting for it
+    required: false
+    default: 'false'
+  retain:
+    description: Seconds to keep the finished process readable by convox ps info. Requires wait or detach, and a V3 rack on 3.25.5 or later
+    required: false
+outputs:
+  pid:
+    description: ID of the process started in wait or detach mode
 runs:
   using: docker
   image: Dockerfile
